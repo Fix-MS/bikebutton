@@ -53,7 +53,16 @@ void send() {
   http.begin(request);
   http.addHeader("Content-Type", "application/json");
 
-  http.POST(jsonSendData);
+  if (numberOfTimes == 1) {
+    http.POST(jsonSendData1);
+  }
+  else if (numberOfTimes == 2) {
+    http.POST(jsonSendData2);
+  }
+  else {
+    http.POST(jsonSendData3);
+  }
+  
   DeserializationError error = deserializeJson(doc, response);
   if(error) {
      Serial.print(F("deserializeJson() failed: "));
