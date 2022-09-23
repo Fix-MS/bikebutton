@@ -10,7 +10,7 @@
 #include "request_data.h"
 
 //// Button
-#define VALIDATION_TIME 3000
+#define VALIDATION_TIME 2000
 
 ezButton button(23); // create ezButton object that attach to pin GIOP21
 
@@ -49,8 +49,9 @@ void send() {
   sendEvent = true;
   numberOfTimes = 0;
 
-  String request = "https://fixms.webfoo.de/api";
+  String request = "https://fixms.webfoo.de/api/reports";
   http.begin(request);
+  http.addHeader("Content-Type", "application/json");
 
   http.POST(jsonSendData);
   DeserializationError error = deserializeJson(doc, response);
@@ -61,7 +62,7 @@ void send() {
      return;
   }
 
-  Serial.println(doc["value"].as<char*>());
+  Serial.println(doc["value"].as<const char*>());
   http.end();
 }
 
