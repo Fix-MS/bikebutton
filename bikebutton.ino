@@ -1,33 +1,56 @@
 #include <ezButton.h>
 
-#define SHORT_PRESS_TIME 1000 // 1000 milliseconds
-#define LONG_PRESS_TIME  1000 // 1000 milliseconds
+//#define SHORT_PRESS_TIME 700 // 1000 milliseconds
+//#define LONG_PRESS_TIME 700 // 1000 milliseconds
+
+#define VALIDATION_TIME 3000
 
 ezButton button(23); // create ezButton object that attach to pin GIOP21
 
-unsigned long pressedTime  = 0;
+unsigned long pressedTime = 0;
 unsigned long releasedTime = 0;
+
+unsigned long numberOfTimes = 0;
+bool sendEvent = true;
 
 void setup() {
   Serial.begin(9600);
   button.setDebounceTime(50); // set debounce time to 50 milliseconds
 }
 
+void send() {
+  Serial.println("Button was pressed: " + String(numberOfTimes));
+
+  sendEvent = true;
+  numberOfTimes = 0;
+
+}
+
 void loop() {
   button.loop(); // MUST call the loop() function first
 
-  if (button.isPressed())
+  if (button.isPressed()) {
     pressedTime = millis();
-
-  if (button.isReleased()) {
+  }
+  else if (button.isReleased()) {
     releasedTime = millis();
 
-    long pressDuration = releasedTime - pressedTime;
+    sendEvent = false;
 
-    if ( pressDuration < SHORT_PRESS_TIME )
-      Serial.println("A short press is detected");
+    numberOfTimes += 1;
 
-    if ( pressDuration > LONG_PRESS_TIME )
+    if (numberOfTimes == 3) {
+      send();
+    }
+
+  }
+  if (millis() - releasedTime >= VALIDATION_TIME && !sendEvent) {
+    /*if ( pressDuration < SHORT_PRESS_TIME )
+    Serial.println("A short press is detected");
+
+      if ( pressDuration >= LONG_PRESS_TIME )
       Serial.println("A long press is detected");
+    */
+    send();
   }
 }
