@@ -1,10 +1,13 @@
 #include <ezButton.h>
 #include <WiFi.h>
+#include <HTTPClient.h>
+#include <ArduinoJson.h>
 
 // NOTE: please create a local file with the following variables
 // const char* ssid = "...";
 // const char* password = "...";
 #include "wifi_credentials.h"
+#include "request_data.h"
 
 //// Button
 #define VALIDATION_TIME 3000
@@ -16,6 +19,9 @@ unsigned long releasedTime = 0;
 
 unsigned long numberOfTimes = 0;
 bool sendEvent = true;
+
+String response = "";
+DynamicJsonDocument doc(2048);
 
 void setup() {
   Serial.begin(9600);
@@ -36,12 +42,27 @@ void setup() {
 }
 
 void send() {
+  HTTPClient http;
+  
   Serial.println("Button was pressed: " + String(numberOfTimes));
 
   sendEvent = true;
   numberOfTimes = 0;
 
-  // TODO: send request to our server
+  String request = "https://fixms.webfoo.de/api";
+  http.begin(request);
+
+  http.POST(jsonSendData);
+  DeserializationError error = deserializeJson(doc, response);
+  if(error) {
+     Serial.print(F("deserializeJson() failed: "));
+     Serial.println(error.f_str());
+     http.end();
+     return;
+  }
+
+  Serial.println(doc["value"].as<char*>());
+  http.end();
 }
 
 void loop() {
