@@ -62,7 +62,8 @@ void send() {
   else {
     http.POST(jsonSendData3);
   }
-  
+
+  // TODO: fix bug
   DeserializationError error = deserializeJson(doc, response);
   if(error) {
      Serial.print(F("deserializeJson() failed: "));
