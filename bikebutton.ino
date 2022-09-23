@@ -1,8 +1,5 @@
 #include <ezButton.h>
 
-//#define SHORT_PRESS_TIME 700 // 1000 milliseconds
-//#define LONG_PRESS_TIME 700 // 1000 milliseconds
-
 #define VALIDATION_TIME 3000
 
 ezButton button(23); // create ezButton object that attach to pin GIOP21
@@ -45,12 +42,6 @@ void loop() {
 
   }
   if (millis() - releasedTime >= VALIDATION_TIME && !sendEvent) {
-    /*if ( pressDuration < SHORT_PRESS_TIME )
-    Serial.println("A short press is detected");
-
-      if ( pressDuration >= LONG_PRESS_TIME )
-      Serial.println("A long press is detected");
-    */
     send();
   }
 }
