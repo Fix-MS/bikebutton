@@ -1,6 +1,6 @@
 # README
 
-This is a bike button subproject of [Münsterhack](https://muensterhack.de/) 2022 project "Fix-MS", which aims to provide nicer UI for the _flaw report form_ ([Mängelmeldung-Formular](https://www.stadt-muenster.de/maengelmeldung)) provided by the city of Münster.
+This is a bike button subproject of [Münsterhack](https://muensterhack.de/) 2022 project "fixMS", which aims to provide nicer UI for the _flaw report form_ ([Mängelmeldung-Formular](https://www.stadt-muenster.de/maengelmeldung)) provided by the city of Münster.
 This subproject aims for the power user.
 It allows to quickly remember a position during a bike ride, which can be reported afterwards in calm surrounding.
 
@@ -9,6 +9,9 @@ It allows to quickly remember a position during a bike ride, which can be report
 ![3D rendering](./3dPrint/bikeButtonRendering.png)
 
 ## Parts list and required tools
+
+This are the parts and tools we used for rapid prototyping.
+But it is also possible to substitute it with other hardware.
 
 - [Assembled Adafruit HUZZAH32 – ESP32 Feather Board - with Stacking Headers](https://www.adafruit.com/product/3619)
 - [TC-MT250ART](https://www.conrad.de/de/p/tru-components-tc-mt250art-drucktaster-tastend-1-st-1589481.html)
@@ -26,6 +29,9 @@ It allows to quickly remember a position during a bike ride, which can be report
 const char* ssid = "...";
 const char* password = "...";
 ```
+
+The button is soldered to GND and pin 23.
+If you want to use an other pin you have to adapt the code accordingly.
 
 ## Tech stack
 
