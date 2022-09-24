@@ -4,8 +4,8 @@
 // Geh-/Radweg, Radverkehr - starke Verschmutzung/Scherben (83)
 const char* jsonSendData1 = "{ " \
   "\"type\": 83, " \
-  "\"location\": \"here\", "\
-  "\"firstname\": \"Max\", "\
+  "\"location\": \"Schlossplatz, Promenade\", "\
+  "\"firstname\": \"Vortragender\", "\
   "\"lastname\": \"Mustermann\", "\
   "\"email\": \"fixms@example.com\" "\
   "}";
@@ -13,8 +13,8 @@ const char* jsonSendData1 = "{ " \
 // Beleuchtung - Leuchte an Straße, Geh- oder Radweg defekt (75)
 const char* jsonSendData2 = "{ " \
   "\"type\": 75, " \
-  "\"location\": \"here\", "\
-  "\"firstname\": \"Max\", "\
+  "\"location\": \"Hafenplatz 1\", "\
+  "\"firstname\": \Vortragender\", "\
   "\"lastname\": \"Mustermann\", "\
   "\"email\": \"fixms@example.com\" "\
   "}";
@@ -23,7 +23,7 @@ const char* jsonSendData2 = "{ " \
 const char* jsonSendData3 = "{ " \
   "\"type\": 92, " \
   "\"location\": \"here\", "\
-  "\"firstname\": \"Max\", "\
+  "\"firstname\": \"Vortragender\", "\
   "\"lastname\": \"Mustermann\", "\
   "\"email\": \"fixms@example.com\" "\
   "}";
