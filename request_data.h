@@ -14,7 +14,7 @@ const char* jsonSendData1 = "{ " \
 const char* jsonSendData2 = "{ " \
   "\"type\": 75, " \
   "\"location\": \"Hafenplatz 1\", "\
-  "\"firstname\": \ "Vortragender\", "\
+  "\"firstname\": \"Vortragender\", "\
   "\"lastname\": \"Mustermann\", "\
   "\"email\": \"fixms@example.com\" "\
   "}";
