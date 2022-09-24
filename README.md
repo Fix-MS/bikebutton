@@ -6,7 +6,7 @@ It allows to quickly remember a position during a bike ride, which can be report
 
 ## 3D rendering
 
-![Screenshot](./3dPrint/bikeButtonRendering.png)
+![3D rendering](./3dPrint/bikeButtonRendering.png)
 
 ## Parts list and required tools
 
