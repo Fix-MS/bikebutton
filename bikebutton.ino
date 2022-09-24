@@ -46,9 +46,6 @@ void send() {
   
   Serial.println("Button was pressed: " + String(numberOfTimes));
 
-  sendEvent = true;
-  numberOfTimes = 0;
-
   String request = "https://fixms.webfoo.de/api/reports";
   http.begin(request);
   http.addHeader("Content-Type", "application/json");
@@ -62,6 +59,9 @@ void send() {
   else {
     http.POST(jsonSendData3);
   }
+
+  sendEvent = true;
+  numberOfTimes = 0;
 
   // TODO: fix bug
   DeserializationError error = deserializeJson(doc, response);
